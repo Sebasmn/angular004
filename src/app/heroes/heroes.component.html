@@ -1,19 +1,10 @@
 <!-- <h2>{{heroe}}</h2> -->
 <h2>Lista de heroes</h2>
 <ul class="heroes">
-    <li *ngFor="let heroe of heroes" (click)="clicItemSeleccionado(heroe)">
+    <li *ngFor="let heroe of heroes" (click)="clicItemSeleccionado(heroe)" [ngClass]="{'selected': heroe === heroeSeleccionado}">
         <span class="badge"> {{heroe.id}}</span> {{heroe.nombre}}
-    </li>
+    </li>   
 </ul>
 
-<div *ngIf="heroeSeleccionado">
-    <h3>Detalle: {{heroeSeleccionado.nombre | uppercase}}</h3>
-    <div><span>Id: </span> {{heroe.id}}</div> 
-    <!-- <div><span>Nombre: </span> {{heroe.nombre | uppercase}} </div>  -->
-    
-    <div>
-        <label for="nombre">Nombre del heroe:</label>
-        <input id="nombre" [(ngModel)]="heroeSeleccionado.nombre" placeholder="Nombre"> 
-    </div>
-</div>
-
+<!--componente detalle heroe-->
+<app-detalle-heroe [heroe]="heroeSeleccionado" [parametroEntrada]="parametro"></app-detalle-heroe>
